@@ -1,6 +1,6 @@
-# langchain
-step by step guidance of langchain
-<h2>What we will learn in this tutorial:</h2>
+# LangChain
+<hr>
+<h2> Module to Learn:</h2>
 <ul>
 <li>Model Input</li>
 <li>Model output</li>
