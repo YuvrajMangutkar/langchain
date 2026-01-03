@@ -1,21 +1,16 @@
-import os
-import openai
-os.environ.items()
-import dotenv
-from dotenv import load_dotenv
-load_dotenv()
-openai.api_key=os.environ.get("OPENAI_API_KEY")
+from langchain_core.prompts import PromptTemplate
+from langchain_community.llms import Ollama
 
-client=openai.OpenAI()
-completion=client.chat.completions.create(
-    model='gpt-3.5-turbo-0125',
-    messages=[{'role':'system','content':'you are the emoyii chatbot which can convert the sentence into the positive,negative and neutral by using the sentiment analysis.'},
-    {'role':'user','content':'workout makes you mentally strong.'},
-    ]
+llm = Ollama(
+    model="mistral",  # must exist in `ollama list`
+    base_url="http://localhost:11434"
 )
-print(completion)
 
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain {topic} like I am a beginner."
+)
 
+chain = prompt | llm
 
-
-
+print(chain.invoke({"topic": "LangChain"}))
