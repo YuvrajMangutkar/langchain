@@ -8,9 +8,9 @@ llm = Ollama(
 
 prompt = PromptTemplate(
     input_variables=["topic"],
-    template="Explain {topic} like I am a beginner."
+    template="determine  {topic} is an positive,negative or neutral senetence"
 )
 
 chain = prompt | llm
 
-print(chain.invoke({"topic": "LangChain"}))
+print(chain.invoke({"topic": "i enjoying solving the leetcode problems daily."}))
